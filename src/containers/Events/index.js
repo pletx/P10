@@ -49,9 +49,11 @@ const EventList = () => {
             onChange={(value) => (value ? changeType(value) : changeType(null))}
           />
           <div id="events" className="ListContainer">
-            
-              {data?.events.filter((event, index) => !type || event.type === type)
+      {data?.events
+              .filter((event, index, self) => index === self.findIndex((e) => e.title === event.title &&  e.type === event.type && e.date === event.date))
+              .filter((event) => !type || event.type === type)
    .slice((currentPage - 1) * 9, currentPage * 9)
+   
    .map((event) => (
               <Modal key={event.id} Content={<ModalEvent event={event} />}>
                 {({ setIsOpened }) => (
@@ -67,9 +69,11 @@ const EventList = () => {
             ))}
           </div>
           <div className="Pagination">
-            {[...Array(pageNumber || 0)].map((_, n) => (
+            {[...Array(pageNumber || 0 )].map((_, n) => (
               // eslint-disable-next-line react/no-array-index-key
-              <a key={n} href="#events" onClick={() => setCurrentPage(n + 1)}>
+              
+              <a key={n} href="#events" onClick={() => setCurrentPage(n + 1)}
+              className={n + 1 === currentPage ? "current-page" : ""}>
                 {n + 1}
               </a>
             ))}

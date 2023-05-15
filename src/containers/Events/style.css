@@ -1,6 +1,5 @@
 .SelectTitle {
   color: white;
 }
-.Pagination a :active{
-color: #000;
-}
+.Pagination a.current-page {
+  color: #000;}
