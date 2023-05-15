@@ -30,10 +30,25 @@ describe("When Form is created", () => {
 
 describe("When a page is created", () => {
   it("a list of events is displayed", () => {
-    // to implement
+    
+
   })
-  it("a list a people is displayed", () => {
-    // to implement
+  it("a list a people is displayed", async () => {
+    render(<Home/>);
+    await screen.findByText("Samira");
+    await screen.findByText("CEO");
+    
+    await screen.findByText("Jean-baptiste");
+    await screen.findByText("Directeur marketing");
+    
+    await screen.findByText("Alice");
+    await screen.findByText("CXO");
+    
+    await screen.findByText("Luís");
+    await screen.findByText("Animateur");
+
+    await screen.findByText("Isabelle");
+    await screen.findByText("VP communication");
   })
   it("a footer is displayed", () => {
     // to implement

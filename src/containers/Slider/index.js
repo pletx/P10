@@ -12,17 +12,19 @@ const Slider = () => {
   );
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIndex((index + 1) % byDateDesc.length);
-    }, 5000);
+    const timer =  setTimeout(
+      () => setIndex(index < byDateDesc.length-1 ? index + 1 : 0),
+      5000
+    );
     return () => clearTimeout(timer);
-  }, [index, byDateDesc.length]);
+  });
 
   const handleRadioChange = (radioIdx) => {
     setIndex(radioIdx);
-    setTimeout(() => {
-      setIndex((index + 1) % byDateDesc.length);
-    }, 10000);
+    setTimeout(
+      () => setIndex(index < byDateDesc.length-1 ? index + 1 : 0),
+      10000
+    );
   };
 
   return (
