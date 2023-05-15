@@ -7,13 +7,14 @@ import ModalEvent from "../ModalEvent";
 
 import "./style.css";
 
-const PER_PAGE = 9;
+
 
 const EventList = () => {
 
   const { data, error } = useData();
   const [type, setType] = useState();
   const [currentPage, setCurrentPage] = useState(1);
+  const PER_PAGE = 9;
   const filteredEvents = (
     (!type
       ? data?.events
@@ -49,8 +50,9 @@ const EventList = () => {
           />
           <div id="events" className="ListContainer">
             
-              {data?.events.filter((event) => !type || event.type === type)
-    .map((event) => (
+              {data?.events.filter((event, index) => !type || event.type === type)
+   .slice((currentPage - 1) * 9, currentPage * 9)
+   .map((event) => (
               <Modal key={event.id} Content={<ModalEvent event={event} />}>
                 {({ setIsOpened }) => (
                   <EventCard

@@ -1,3 +1,6 @@
 .SelectTitle {
   color: white;
 }
+.Pagination a :active{
+color: #000;
+}
