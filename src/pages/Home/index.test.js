@@ -35,20 +35,42 @@ describe("When a page is created", () => {
   })
   it("a list a people is displayed", async () => {
     render(<Home/>);
+    const images = await screen.findAllByRole("img");
+
     await screen.findByText("Samira");
     await screen.findByText("CEO");
-    
+    const SamiraImage = images.find(
+      (img) => img.alt === "Samira");
+    expect(SamiraImage).toBeInTheDocument();
+
+
     await screen.findByText("Jean-baptiste");
     await screen.findByText("Directeur marketing");
-    
+    const jeanBaptisteImage = images.find(
+      (img) => img.alt === "Jean-baptiste");
+    expect(jeanBaptisteImage).toBeInTheDocument();
+
     await screen.findByText("Alice");
     await screen.findByText("CXO");
-    
+    const AliceImage = images.find(
+      (img) => img.alt === "Alice");
+    expect(AliceImage).toBeInTheDocument();
+
     await screen.findByText("Luís");
     await screen.findByText("Animateur");
+    const LuísImage = images.find(
+      (img) => img.alt === "Luís");
+    expect(LuísImage).toBeInTheDocument();
 
     await screen.findByText("Isabelle");
     await screen.findByText("VP communication");
+    const IsabelleImage = images.find(
+      (img) => img.alt === "Isabelle");
+    expect(IsabelleImage).toBeInTheDocument();
+
+
+
+   
   })
   it("a footer is displayed", () => {
     // to implement
