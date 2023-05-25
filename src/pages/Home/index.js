@@ -14,9 +14,8 @@ import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
   const {data} = useData()
-  console.log('event',data)
   const last = data?.events.sort((evtA, evtB) => new Date(evtB.date) - new Date(evtA.date))[0];
-console.log('last',last)
+
   return <>
     <header>
       <Menu />
